@@ -1,0 +1,16 @@
+{
+    "Mitbewohnis": {"Ian": "Zimmer 1",
+                "Sophia": "Zimmer 2",
+                "Paula": "Zimmer 3"},
+    "Pro_person": {"Betriebskosten": 60,
+                "Zusatzkosten": 20,
+                "Puffer": 10,
+                "Extra": 0},
+    "Pro_zimmer": {"Zimmer 1": 13,
+                "Zimmer 2": 20,
+                "Zimmer 3": 15},
+    "Kosten": {"Fläche": 12.5, "Heizung": 0.9},
+    "Totals":{"Gemeinschaftsfläche": 55,
+                "Heizung": 90.5,
+                "Kalt": 1285.5}
+}
