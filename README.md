@@ -1,9 +1,3 @@
----
-runme:
-  id: 01HV27MY596NQZNZC5G53RBDH7
-  version: v3
----
-
 ## WG* Rent Calculator
 
 This is a small program that takes in the data of your apartment in json format and outputs a markdown file with a table that outlines the costs of rent for each individual roommate in detail.
