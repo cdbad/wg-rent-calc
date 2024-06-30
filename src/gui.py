@@ -1,5 +1,8 @@
 import tkinter as tk
-from tkinter import ttk
+# from tkinter import ttk
+from datetime import datetime
+import os
+from os.path import exists
 
 class GUI:
     '''GUI for the homepage'''
@@ -12,7 +15,6 @@ class GUI:
         self.root.title('WG Kosten')
         self.root.geometry('400x500')
         self.root.minsize(400, 500)
-        # self.root.resizable(False, False)
 
         self.base_canvas = tk.Canvas(
                             self.root,
@@ -50,11 +52,15 @@ class GUI:
 
         self._room_frame(self.base_canvas)
 
+        self.error_frame = tk.Frame(self.base_canvas)
+
+        self.error_frame.pack()
+
         # save button
         self.__button(
             self.base_canvas,
-            'Save',
-            cmd=self.save,
+            'Generate',
+            cmd=self.generate,
             font_size=13,
             )
 
@@ -130,19 +136,37 @@ class GUI:
 
         self.rooms_frame.pack(fill=tk.X)
 
-    def __label(self, container, txt, color='black', font_size=13, justify=tk.W):
-        tk.Label(
-            container,
-            text=txt,
-            anchor=justify,
-            font=('Arial', font_size),
-            fg=color
-            ).pack(
+    def __label(self, container, txt, font_size=13,
+                justify=tk.W, label_type='normal'):
+        if label_type == 'normal':
+            tk.Label(
+                container,
+                text=txt,
+                anchor=justify,
+                font=('Arial', font_size),
+                fg='black'
+                ).pack(
+                    padx=5,
+                    pady=(5, 10),
+                    side=tk.TOP,
+                    fill=tk.X
+                    )
+        elif label_type == 'error':
+            l = tk.Label(
+                container,
+                text=txt,
+                anchor=tk.W,
+                font=('Arial', 10),
+                fg='red'
+                )
+            # yield l
+            l.pack(
                 padx=5,
-                pady=(5, 10),
+                pady=5,
                 side=tk.TOP,
                 fill=tk.X
                 )
+            return l
 
     def __entry(self, container, txt, r=0):
         frame = tk.Frame(
@@ -188,7 +212,7 @@ class GUI:
             width=size[0] if not size[0] else len(txt)
             ).pack(
                 padx=5,
-                pady=5,
+                pady=0,
                 side=tk.LEFT
                 )
         button_frame.pack(
@@ -241,5 +265,41 @@ class GUI:
         
         self.room_frame.pack(pady=10)
 
-    def save(self):
-        print(self.flaeche.get())
+    def remove_error_label(self):
+        if hasattr(self, 'error_label'):
+            self.error_label.destroy()
+
+    def generate(self):
+        entries = [self.flaeche.get(), self.preis.get(),
+                   self.heizung.get(), self.nebenkosten.get(),
+                   self.extras.get()]
+        
+        self.remove_error_label()
+
+        if not all(entries):
+            self.error_label : tk.Label = self.__label(
+                self.error_frame,
+                txt='You have to fill out all the entries',
+                label_type='error'
+                )
+        else:
+            self.remove_error_label()
+            date = datetime.now().strftime("%d-%m-%y")
+            path = f'./src/data/data-{date}.json'
+            count = 0
+
+            while exists(path):
+                count += 1
+                path = f'./src/data/data-{date}({count}).json'
+                print(path)
+
+            with open(path, 'x') as file:
+                file.write(f'''{{
+    "WG": {{
+            "Fläche": {self.flaeche.get()},
+            "Preis": {self.preis.get()},
+            "Heizung": {self.heizung.get()},
+            "Nebenkosten": {self.nebenkosten.get()},
+            "Extras": {self.extras.get()}
+    }}
+}}''')
