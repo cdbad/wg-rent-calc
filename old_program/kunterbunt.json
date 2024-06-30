@@ -1,0 +1,25 @@
+{
+    "Mitbewohnis": {"Daniel": "Unten 1",
+                "Emma": "Unten 2",
+                "Fabi": "Mitte Balkon",
+                "Léa": "Mitte klein",
+                "Flo": "Mitte groß",
+                "Jasper": "Dachboden",
+                "Cody": "Dachboden"},
+    "Pro_person": {"Betriebskosten": 67.5,
+                "Zusatzkosten": 33.12,
+                "Puffer": 15,
+                "Extra": 10},
+    "Pro_zimmer": {"Unten 1": 16.5,
+                "Unten 2": 16.5,
+                "Mitte Balkon": 20,
+                "Mitte klein": 10,
+                "Mitte groß": 22,
+                "Dachboden": 26},
+    "Kosten": {"Fläche": 13.73, "Heizung": 0.88},
+    "Totals":{"Gemeinschaftsfläche": 93,
+                "Heizung": 200,
+                "Kalt": 2800,
+                "Wohnfläche": 204
+            }
+}

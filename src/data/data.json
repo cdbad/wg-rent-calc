@@ -1,0 +1,14 @@
+{
+    "WG": {
+        "Fläche": -1,
+        "Preis": -1,
+        "Heizung": -1,
+        "Nebenkosten": -1,
+        "Extras": {}
+    },
+    "Zimmer 0": {
+        "Name": "Zimmer 0",
+        "Mitbewohnis": [],
+        "Fläche": -1
+    }
+}

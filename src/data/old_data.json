@@ -1,0 +1,17 @@
+{
+    "Mitbewohnis": {"Person 1": "Zimmer 1",
+                "Person 2": "Zimmer 2",
+                "Person 3": "Zimmer 2"},
+    "Pro_person": {"Betriebskosten": 34.2,
+                "Zusatzkosten": 20.12,
+                "Puffer": 15,
+                "Extra": 10},
+    "Pro_zimmer": {"Zimmer 1": 13.5,
+                "Zimmer 2": 16.5},
+    "Kosten": {"Fläche": 13.73, "Heizung": 0.88},
+    "Totals":{"Gemeinschaftsfläche": 30,
+                "Heizung": 80,
+                "Kalt": 1500,
+                "Wohnfläche": 60
+            }
+}

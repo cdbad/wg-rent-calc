@@ -1,7 +1,7 @@
 import json
 from collections import Counter
 
-output, data_file = 'output.md', open('data.json')
+output, data_file = 'output.md', open('data/data.json')
 data = json.load(data_file)
 kalt, heiz, warm = [], [], []
 
