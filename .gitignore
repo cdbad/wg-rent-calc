@@ -3,3 +3,5 @@ notes.md
 */*pycache*/
 *pycache*
 example*.py
+.gitignore
+tools/styles.py
