@@ -3,7 +3,8 @@ from tkinter import ttk
 from tools.btn_add_room import add_room
 from tools.gridder import gridder
 from tools.scrollbar_setup import scrollbar_setup
-from tools.room_name import label_name
+from tools.labels import label_name
+
 
 root = tk.Tk()
 root.title('WG Rent Calculator')
@@ -16,7 +17,11 @@ scrollbar_frame = scrollbar_setup(root)
 # TITLE FRAME ####################################
 title_frame = ttk.Frame(scrollbar_frame)
 
-label_name(title_frame, title_frame, name='My WG')
+label_name(
+    title_frame,
+    name='My WG',
+    parent_frame=title_frame,
+)
 
 title_frame.pack()
 ##################################################
@@ -25,14 +30,13 @@ title_frame.pack()
 main_frame = ttk.Frame(scrollbar_frame)
 
 gridder(main_frame,
-    [
-        # 'Name der WG',
-        'Kaltmiete',
-        'Größe',
-        'Heizung',
-        'Nebenkosten',
-        'Extra'
-    ],
+    {
+        'Kaltmiete': '1200',
+        'Größe': '112',
+        'Heizung': '1.2',
+        'Nebenkosten': '20',
+        'Extra': '10'
+    },
     1
 )
 

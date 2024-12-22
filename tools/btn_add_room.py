@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from tools.room_name import label_name
+from tools.labels import label_name
 from tools.btn_remove_room import remove_room
 from tools.gridder import gridder
 
@@ -8,18 +8,13 @@ from tools.gridder import gridder
 def add_room(frame: ttk.Frame):
     room_frame = ttk.Frame(frame)
 
-    style = ttk.Style()
-    style.configure(
-        'Rm.TLabel',
-        font = ('Helvetica', 10),
-    )
-
     label_name(room_frame, parent_frame=frame)
 
     lbl_rm = ttk.Label(
         room_frame,
         text='Entfernen',
-        style='Rm.TLabel',
+        font = ('Helvetica', 10),
+        foreground='red',
         cursor='hand2'
     )
     lbl_rm.bind(
@@ -30,10 +25,10 @@ def add_room(frame: ttk.Frame):
 
     gridder(
         room_frame,
-        [
-            'Größe',
-            'Mitbewohnis'
-        ],
+        {
+            'Größe': '21',
+            'Mitbewohnis': 'Ana, Paula'
+        },
         1
     )
 
