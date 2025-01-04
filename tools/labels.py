@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 def label_name(
     frame,
     parent_frame: ttk.Frame = None,

@@ -4,6 +4,7 @@ from tools.btn_add_room import add_room
 from tools.gridder import gridder
 from tools.scrollbar_setup import scrollbar_setup
 from tools.labels import label_name
+from tools.calculator import Calculator
 
 
 root = tk.Tk()
@@ -74,7 +75,7 @@ room_frame.pack()
 btn_calc = ttk.Button(
     scrollbar_frame,
     text='Calculate',
-    command=lambda: print('Calculate')
+    command=lambda: Calculator(scrollbar_frame)
 ).pack(pady=(10, 20))
 
 root.mainloop()

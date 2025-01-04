@@ -1,18 +1,21 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 def on_focus(entry: ttk.Entry):
     if entry['foreground'].__str__() == 'grey':
+        # placeholders[entry.winfo_id()] = names['']
         entry.delete(0, 'end')
         entry['foreground'] = 'black'
 
-def on_unfocus(entry: ttk.Entry, default_placeholder: str):
-    print(entry.get())
+def on_unfocus(entry: ttk.Entry, placeholders: dict):
     if not entry.get() or entry.get() == '':
         entry['foreground'] = 'grey'
-        entry.insert(0, default_placeholder)
+        entry.insert(0, placeholders[entry.winfo_id()])
 
-def gridder(frame, names: dict, starting_row: int = 0):
+def gridder(frame: ttk.Frame, names: dict, starting_row: int = 0):
+    placeholders = dict()
+
     for arg in names.keys():
         lbl = ttk.Label(
             frame,
@@ -23,6 +26,7 @@ def gridder(frame, names: dict, starting_row: int = 0):
         lbl.grid(column=0, row=starting_row, sticky=tk.W)
 
         entry = ttk.Entry(frame)
+        placeholders[entry.winfo_id()] = names[arg]
         entry.insert(0, names[arg])
         entry['foreground'] = 'grey'
         entry.bind(
@@ -31,7 +35,7 @@ def gridder(frame, names: dict, starting_row: int = 0):
         )
         entry.bind(
             '<FocusOut>',
-            lambda e, entry=entry: on_unfocus(entry, names[arg])
+            lambda e, entry=entry: on_unfocus(entry, placeholders)
         )
         entry.grid(row=starting_row, column=1)
 
