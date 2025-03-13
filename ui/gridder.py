@@ -4,7 +4,6 @@ from tkinter import ttk
 
 def on_focus(entry: ttk.Entry):
     if entry['foreground'].__str__() == 'grey':
-        # placeholders[entry.winfo_id()] = names['']
         entry.delete(0, 'end')
         entry['foreground'] = 'black'
 

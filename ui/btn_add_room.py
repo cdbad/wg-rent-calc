@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-from tools.labels import label_name
-from tools.btn_remove_room import remove_room
-from tools.gridder import gridder
+from ui.labels import label_name
+from ui.btn_remove_room import remove_room
+from ui.gridder import gridder
 
 
 def add_room(frame: ttk.Frame):

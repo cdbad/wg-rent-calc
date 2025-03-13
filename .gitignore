@@ -5,3 +5,5 @@ notes.md
 example*.py
 .gitignore
 tools/styles.py
+calctest.py
+output/
